@@ -2,6 +2,7 @@ class Board
   attr_reader :field
   def initialize
     @field = ['.', '.', '.', '.', '.', '.', '.', '.', '.']
+    @turns = []
   end
 
   def display
@@ -34,5 +35,15 @@ class Board
     when "C3"
       8
     end
+  end
+
+  def turn(location)
+    index = get_index(location)
+    if @turns.length % 2 == 0
+      @field[index] = "X"
+    else
+      @field[index] = "O"
+    end
+    @turns << location
   end
 end

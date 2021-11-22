@@ -30,12 +30,13 @@ describe Board do
   describe '.turn' do
     it 'updates the board with the turn' do
       subject.turn('A1')
-      expect(subject.field.turn).to eq ['X', '.', '.', '.', '.', '.', '.', '.', '.']
+      expect(subject.field).to eq ['X', '.', '.', '.', '.', '.', '.', '.', '.']
     end
 
     it 'changes from X to O on second turn' do
+      subject.turn('A1')
       subject.turn('B2')
-      expect(subject.field.turn).to eq ['X', '.', '.', '.', 'O', '.', '.', '.', '.']
+      expect(subject.field).to eq ['X', '.', '.', '.', 'O', '.', '.', '.', '.']
     end
   end
 end
