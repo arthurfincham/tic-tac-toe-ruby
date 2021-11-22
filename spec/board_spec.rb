@@ -53,8 +53,8 @@ describe Board do
       subject.turn("A2")
       subject.turn("C3")
       subject.turn("A3")
-      expect(subject.win?).to be true
-    end
+      expect(subject.win?).to eq "X wins!"
+      end
   end
 
   describe ".win? vertical" do
@@ -64,8 +64,8 @@ describe Board do
       subject.turn("B2")
       subject.turn("C3")
       subject.turn("C2")
-      expect(subject.win?).to be true
-    end
+      expect(subject.win?).to eq "X wins!"
+      end
   end
   describe "win? diagonal" do
     it "returns true if diagonal line" do
@@ -74,7 +74,22 @@ describe Board do
       subject.turn("B2")
       subject.turn("A3")
       subject.turn("C3")
-      expect(subject.win?).to be true
+      expect(subject.win?).to eq "X wins!"
+      end
+  end
+
+  describe ".game_over?" do
+    it 'returns true if all fields are taken' do
+      subject.turn("A1")
+      subject.turn("A2")
+      subject.turn("A3")
+      subject.turn("B1")
+      subject.turn("B3")
+      subject.turn("B2")
+      subject.turn("C1")
+      subject.turn("C3")
+      subject.turn("C2")
+      expect(subject.game_over?).to eq true
     end
   end
 end

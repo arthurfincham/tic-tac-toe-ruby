@@ -70,6 +70,15 @@ class Board
   end
 
   def win?
-    convert_fields.any? ["X"]
+    return "X wins!" if convert_fields.any? ["X"]
+    return  "O wins!" if convert_fields.any? ["O"]
+  end
+
+  def game_over?
+    if @field.include? "."
+      false
+    else
+      true
+    end
   end
 end
