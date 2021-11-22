@@ -1,7 +1,19 @@
 class Board
   attr_reader :field
+
+  WINNING_FIELDS = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2],
+  ]
+
   def initialize
-    @field = ['.', '.', '.', '.', '.', '.', '.', '.', '.']
+    @field = [".", ".", ".", ".", ".", ".", ".", ".", "."]
     @turns = []
   end
 
@@ -9,8 +21,8 @@ class Board
     print "  A B C\n"
     n = 1
     @field.each_slice(3).to_a.each do |row|
-       print "#{n} " + row.join(" ") + "\n"
-       n += 1
+      print "#{n} " + row.join(" ") + "\n"
+      n += 1
     end
   end
 
@@ -39,7 +51,7 @@ class Board
 
   def turn(location)
     index = get_index(location)
-    raise "You cannot claim this cell." if @field[index] != '.'
+    raise "You cannot claim this cell." if @field[index] != "."
     if @turns.length % 2 == 0
       @field[index] = "X"
     else
@@ -47,5 +59,4 @@ class Board
     end
     @turns << location
   end
-
 end
