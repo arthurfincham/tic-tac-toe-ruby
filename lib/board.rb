@@ -39,6 +39,7 @@ class Board
 
   def turn(location)
     index = get_index(location)
+    raise "You cannot claim this cell." if @field[index] != '.'
     if @turns.length % 2 == 0
       @field[index] = "X"
     else
@@ -46,4 +47,5 @@ class Board
     end
     @turns << location
   end
+
 end

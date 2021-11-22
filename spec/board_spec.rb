@@ -38,5 +38,10 @@ describe Board do
       subject.turn('B2')
       expect(subject.field).to eq ['X', '.', '.', '.', 'O', '.', '.', '.', '.']
     end
+
+    it 'throws an error if the cell is already full' do
+      subject.turn('A1')
+      expect{subject.turn('A1')}.to raise_error "You cannot claim this cell."
+    end
   end
 end
