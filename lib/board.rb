@@ -12,4 +12,27 @@ class Board
        n += 1
     end
   end
+
+  def get_index(location)
+    case location
+    when "A1"
+      0
+    when "A2"
+      1
+    when "A3"
+      2
+    when "B1"
+      3
+    when "B2"
+      4
+    when "B3"
+      5
+    when "C1"
+      6
+    when "C2"
+      7
+    when "C3"
+      8
+    end
+  end
 end
