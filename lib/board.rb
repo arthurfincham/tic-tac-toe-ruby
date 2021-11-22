@@ -59,4 +59,17 @@ class Board
     end
     @turns << location
   end
+
+  def convert_fields
+    winners = WINNING_FIELDS
+    winners.map do |field|
+      field.map do |item|
+        item = @field[item]
+      end.uniq
+    end
+  end
+
+  def win?
+    convert_fields.any? ["X"]
+  end
 end
